@@ -5,7 +5,7 @@ import { Entity, Column, BaseEntity, Index, PrimaryGeneratedColumn } from "typeo
 @Index(["building_name_en"], { unique: true })
 @Index(["estate_name_en"], { unique: true })
 @Index(["building_name_zh"])
-@Index(["district","address","year_built"])
+@Index(["district","address","year_built","no_of_basement","no_of_storey"])
 @Index(["latitude", "longitude"], { unique: true })
 export class Building extends BaseEntity  {
     @PrimaryGeneratedColumn('increment')
@@ -34,6 +34,9 @@ export class Building extends BaseEntity  {
 
     @Column({length: 1111})
     no_of_storey: string
+
+    @Column({length: 1111})
+    no_of_basement: string
 
     @Column({type:'longtext', nullable: true})
     building_description_en: string
